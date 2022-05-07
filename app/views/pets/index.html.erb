@@ -1,0 +1,11 @@
+<h1>Seja bem vindo a loja do PET!</h1>
+
+<h3>Lista de pets</h3>
+<ul>
+<% @pets.each do |pet| %>
+  
+  <li>
+  <%= "#{pet.name} ---- #{pet.breed}"%>
+  </li>
+  
+<% end %></ul>

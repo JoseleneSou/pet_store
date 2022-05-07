@@ -1,0 +1,27 @@
+<h1>Cadastrar novo Pet</h1>
+
+  <% if @pet.errors.any? %>
+    <% @pet.errors.full_messages.each do |i| %>
+      <p class="errors"><%= i %></p> 
+    <% end %>
+  <% end %>
+
+<%= form_with model: @pet do |form| %>
+
+  <p>
+    <%= form.label :name %><br/>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :breed %><br/>
+    <%= form.text_field :breed %>
+  </p>
+  <p>
+    <%= form.label :age %><br/>
+    <%= form.text_field :age %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
