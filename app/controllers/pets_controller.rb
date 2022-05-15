@@ -14,6 +14,19 @@ class PetsController < ApplicationController
     @pet = Pet.new
   end
 
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
+  def update
+    @pet = Pet.find(params[:id])
+    if @pet.update(pet_params)
+      redirect_to @pet, notice: "Cadastro atualizado com sucesso!"
+    else
+      render action: :edit
+    end
+  end
+
   def create
     @pet = Pet.new(pet_params)
     if @pet.save
