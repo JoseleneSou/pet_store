@@ -1,4 +1,6 @@
 class PetsController < ApplicationController
+  before_action :set_pet, only: [:show, :edit, :update]
+
   def index
     @pets = Pet.all
   end
@@ -7,7 +9,6 @@ class PetsController < ApplicationController
   end
 
   def show
-    @pet = Pet.find params[:id]
   end
 
   def new
@@ -15,11 +16,9 @@ class PetsController < ApplicationController
   end
 
   def edit
-    @pet = Pet.find(params[:id])
   end
 
   def update
-    @pet = Pet.find(params[:id])
     if @pet.update(pet_params)
       redirect_to @pet, notice: "Cadastro atualizado com sucesso!"
     else
@@ -37,6 +36,10 @@ class PetsController < ApplicationController
   end
   
   private
+
+  def set_pet
+    @pet = Pet.find(params[:id])
+  end
 
   def pet_params
     params.require(:pet).permit(:name, :breed, :age)
